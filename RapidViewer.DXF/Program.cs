@@ -14,9 +14,11 @@ namespace RapidViewer.DXF
         [STAThread]
         static void Main()
         {
+            AnyCAD.Foundation.GlobalInstance.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
+            AnyCAD.Foundation.GlobalInstance.Destroy();
         }
     }
 }
