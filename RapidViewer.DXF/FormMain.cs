@@ -37,6 +37,11 @@ namespace RapidViewer.DXF
         {
             return new Vector3(clr.R / 255.0f, clr.G / 255.0f, clr.B / 255.0f);
         }
+
+        double D2R(double degreee)
+        {
+            return degreee / 180.0 * Math.PI;
+        }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -54,6 +59,9 @@ namespace RapidViewer.DXF
 
             foreach(var line in dxfDoc.Lines)
             {
+                if (line.StartPoint.Equals(line.EndPoint))
+                    continue;
+
                var shape =  SketchBuilder.MakeLine(ToPoint(line.StartPoint), ToPoint(line.EndPoint));
                 mRenderView.ShowShape(shape, ToColor(line.Color));
             }
@@ -61,7 +69,7 @@ namespace RapidViewer.DXF
             foreach(var arc in dxfDoc.Arcs)
             {
                 var shape = SketchBuilder.MakeArcOfCircle(new GCirc(new GAx2(ToPoint(arc.Center), GP.DZ()), arc.Radius),
-                    arc.StartAngle, arc.EndAngle);
+                    D2R(arc.StartAngle), D2R(arc.EndAngle));
                 mRenderView.ShowShape(shape, ToColor(arc.Color));
             }
 
