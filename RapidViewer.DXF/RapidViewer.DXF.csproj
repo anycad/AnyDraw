@@ -36,14 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AnyCAD.Foundation.NET4, Version=2023.3.6.1549, Culture=neutral, PublicKeyToken=adad17ef48f32d48, processorArchitecture=MSIL">
-      <HintPath>packages\AnyCAD.Foundation.NET.2023.3.6.1549\lib\net48\AnyCAD.Foundation.NET4.dll</HintPath>
+    <Reference Include="AnyCAD.Foundation.NET4, Version=2023.7.28.906, Culture=neutral, PublicKeyToken=adad17ef48f32d48, processorArchitecture=MSIL">
+      <HintPath>packages\AnyCAD.Foundation.NET.2023.7.28.918\lib\net48\AnyCAD.Foundation.NET4.dll</HintPath>
     </Reference>
-    <Reference Include="AnyCAD.WinForms.NET4, Version=2023.3.6.1549, Culture=neutral, PublicKeyToken=adad17ef48f32d48, processorArchitecture=MSIL">
-      <HintPath>packages\AnyCAD.Rapid.NET.2023.3.6.1549\lib\net48\AnyCAD.WinForms.NET4.dll</HintPath>
+    <Reference Include="AnyCAD.WinForms.NET4, Version=2023.7.28.906, Culture=neutral, PublicKeyToken=adad17ef48f32d48, processorArchitecture=MSIL">
+      <HintPath>packages\AnyCAD.Rapid.NET.2023.7.28.918\lib\net48\AnyCAD.WinForms.NET4.dll</HintPath>
     </Reference>
-    <Reference Include="AnyCAD.WPF.NET4, Version=2023.3.6.1549, Culture=neutral, PublicKeyToken=adad17ef48f32d48, processorArchitecture=MSIL">
-      <HintPath>packages\AnyCAD.Rapid.NET.2023.3.6.1549\lib\net48\AnyCAD.WPF.NET4.dll</HintPath>
+    <Reference Include="AnyCAD.WPF.NET4, Version=2023.7.28.906, Culture=neutral, PublicKeyToken=adad17ef48f32d48, processorArchitecture=MSIL">
+      <HintPath>packages\AnyCAD.Rapid.NET.2023.7.28.918\lib\net48\AnyCAD.WPF.NET4.dll</HintPath>
     </Reference>
     <Reference Include="netDxf, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\netDXF.2.2.0.1\lib\net45\netDxf.dll</HintPath>
@@ -97,11 +97,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\AnyCAD.Foundation.NET.2023.3.6.1549\build\net\AnyCAD.Foundation.NET.targets" Condition="Exists('packages\AnyCAD.Foundation.NET.2023.3.6.1549\build\net\AnyCAD.Foundation.NET.targets')" />
+  <Import Project="packages\AnyCAD.Foundation.Win32.2023.7.28.918\build\net\AnyCAD.Foundation.Win32.targets" Condition="Exists('packages\AnyCAD.Foundation.Win32.2023.7.28.918\build\net\AnyCAD.Foundation.Win32.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\AnyCAD.Foundation.NET.2023.3.6.1549\build\net\AnyCAD.Foundation.NET.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AnyCAD.Foundation.NET.2023.3.6.1549\build\net\AnyCAD.Foundation.NET.targets'))" />
+    <Error Condition="!Exists('packages\AnyCAD.Foundation.Win32.2023.7.28.918\build\net\AnyCAD.Foundation.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AnyCAD.Foundation.Win32.2023.7.28.918\build\net\AnyCAD.Foundation.Win32.targets'))" />
   </Target>
 </Project>
