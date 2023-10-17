@@ -54,6 +54,8 @@ namespace AnyDraw
                 for(int ii=0; ii<shapes.Count; ++ii)
                 {
                     var shape = shapes[ii];
+                    if(shape == null) 
+                        continue;
                     if(shape.GetShapeType() == EnumTopoShapeType.Topo_EDGE)
                     {
                         var sce = SimpleCurveElement.Create(doc);
