@@ -8,6 +8,6 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AnyCAD.Platform.NET" Version="2023.10.17.2019" />
+		<PackageReference Include="AnyCAD.Platform.NET" Version="2023.10.28.1225" />
 	</ItemGroup>
 </Project>
