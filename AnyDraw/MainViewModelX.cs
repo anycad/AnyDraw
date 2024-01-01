@@ -27,8 +27,12 @@ namespace AnyDraw
         {
             base.DoInitialize();            
             Viewer.SetStandardView(EnumStandardView.Top, false);
-            Viewer.SetCoordinateWidget(EnumViewCoordinateType.Axis);
+            Viewer.SetCoordinateWidget(EnumViewCoordinateType.Axis);      
             Viewer.SetCoordinateWidgetText("x", "y", "");
+
+            Viewer.SetViewMode2D(true);
+            Viewer.SetRulerWidget(EnumRulerWidgetType.Default);
+
             ViewContext.SetOrbitButton(EnumMouseButton.Zero);
             Viewer.SetBackgroundColor(new Vector4(33 / 255.0f, 40 / 255.0f, 48 / 255.0f, 0));
             var material = ViewContext.GetDefaultMaterial(EnumShapeFilter.Edge);

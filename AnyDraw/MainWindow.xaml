@@ -154,6 +154,11 @@
             </Fluent:Ribbon.QuickAccessItems>
             
             <Fluent:RibbonTabItem Header="首页">
+                <Fluent:RibbonGroupBox Header="文件" Margin="7,0,0,0" >
+                    <Fluent:Button Header="DXF"  Command="{Binding ExecuteSystemCommand}" 
+                                               CommandParameter="ImportDXF"
+                                   Icon="{Binding Source={x:Static ax:Icons.Point}}" Margin="0,0,7,0"/>
+                </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="绘制" Margin="7,0,0,0" >
                     <Fluent:Button Header="点"  Command="{Binding ExecuteSystemCommand}" 
                                                CommandParameter="Point"
@@ -209,6 +214,9 @@
                 </Fluent:RibbonGroupBox>-->
                 <Fluent:RibbonGroupBox Header="视图" Margin="7,0,0,0">
                     <Fluent:Button Header="适应窗口" Command="{Binding ZoomFitCommand}" Icon="{Binding Source={x:Static ax:Icons.ZoomToWindow}}" Margin="0,0,7,0"/>
+                    <Fluent:Button Header="放大" Command="{Binding ExecuteSystemCommand}" 
+                                   CommandParameter="RectZoom"
+                                   Icon="{Binding Source={x:Static ax:Icons.ZoomToWindow}}" Margin="0,0,7,0"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="管理" Margin="7,0,0,0">
                     <Fluent:Button Header="材质"  Command="{Binding MaterialManagementCommand}" 
@@ -248,7 +256,7 @@
                         <ad:LayoutAnchorablePane DockWidth="200">
                             <ad:LayoutAnchorable Title="属性"  CanClose="False" CanFloat="True" CanHide="False" >
                                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                                    <au:AuPropertyView/>
+                                    <av:AuPropertyView/>
                                 </ScrollViewer>
                             </ad:LayoutAnchorable>
                         </ad:LayoutAnchorablePane>

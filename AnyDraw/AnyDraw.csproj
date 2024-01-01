@@ -19,10 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AnyCAD.AppFramework.NET" Version="2023.10.24.1026" />
+    <PackageReference Include="AnyCAD.AppFramework.NET" Version="2024.1.1.1124" />
     <PackageReference Include="AnyCAD.UX" Version="1.0.2" />
-	<PackageReference Include="Dirkster.AvalonDock" Version="4.72.0" />
-	<PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.72.0" />
+	<PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
+	<PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.72.1" />
 	<PackageReference Include="AnyCAD.SourceGenerator.Common" Version="1.1.2" />
 	<PackageReference Include="AnyCAD.SourceGenerator.Tools" Version="1.1.2" />
 	<PackageReference Include="OpenCAX.Icons" Version="1.0.0" />
