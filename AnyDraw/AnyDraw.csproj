@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AnyCAD.AppFramework.NET" Version="2024.3.1.936" />
+    <PackageReference Include="AnyCAD.AppFramework.NET" Version="2024.4.15.1505" />
     <PackageReference Include="AnyCAD.UX" Version="1.0.2" />
 	<PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
 	<PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.72.1" />

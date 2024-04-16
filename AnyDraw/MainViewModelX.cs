@@ -1,10 +1,12 @@
 ﻿using AnyCAD.Foundation;
 using AnyCAD.NX.ViewModel;
+using CommunityToolkit.Mvvm.Input;
 using Fluent;
+using System.Diagnostics;
 
 namespace AnyDraw
 {
-    internal class MainViewModelImpl : MainRibbonViewModel
+    internal partial class MainViewModelImpl : MainRibbonViewModel
     {
         public MainViewModelImpl(IRenderView viewer)
             : base(viewer)
@@ -80,6 +82,47 @@ namespace AnyDraw
             undo.Commit();
 
             //ZoomFitCommand.Execute("");
+        }
+
+        [RelayCommand]
+        void Nest()
+        {
+            var dlg = new Microsoft.Win32.OpenFileDialog
+            {
+                FileName = "AnyNest.exe",
+                DefaultExt = ".exe",
+                Filter = "AnyNest Files (*.exe)|*.exe"
+            };
+            var result = dlg.ShowDialog();
+            if (result != true)
+                return;
+
+            var db = new AnyCAD.IO.Drawing.DrawingDb();
+            string input = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "initial.json");
+            db.Save(Document, input);
+            
+            string config = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(input), "config.json");
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = dlg.FileName; 
+            startInfo.Arguments = $"--input {input} --output {input} --config {config}"; 
+
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = false; 
+ 
+            using (Process process = new Process())
+            {
+                process.StartInfo = startInfo;
+                process.Start();
+                process.WaitForExit();  
+                int exitCode = process.ExitCode;  
+            }
+
+            var output = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "initial_result.json");
+            if(System.IO.File.Exists(output))
+            {
+                var nr = AnyDraw.IO.NestResult.Load(output);
+                nr.Apply(Document);
+            }
         }
     }
 }

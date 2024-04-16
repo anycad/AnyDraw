@@ -107,7 +107,7 @@ namespace AnyCAD.IO.Drawing
 
     public class Entity
     {
-        public uint Id { get; set; } = 0;
+        public ulong Id { get; set; } = 0;
         public uint LayerId { get; set; } = 0;
 
         public string Type { get; set; } = string.Empty;
@@ -180,6 +180,39 @@ namespace AnyCAD.IO.Drawing
                 materials.TryGetValue(shape.LayerId, out var layerId);
                 shape.Show(doc, layerId);
             }
+        }
+
+        public void Save(Document doc, string fileName)
+        {
+            var table = doc.FindTable(CurveElement.GetStaticClassId());
+            for(  var itr = table.CreateIterator(); itr.More(); itr.Next())
+            {
+                var pe = PolylineElement.Cast(itr.Current());
+                if (pe != null)
+                {
+                    
+                    var shape = new Shape() { Type = "Polyline" };
+                    var points = pe.GetPoints();
+                    shape.Data = new double[points.Count * 2] ;
+                    for(int ii=0; ii<points.Count; ii++)
+                    {
+                        var pt = points[ii];
+                        shape.Data[ii * 2] = pt.x;
+                        shape.Data[(ii * 2) + 1] = pt.y;
+                    }
+
+                    var entity = new Entity() { Id = pe.GetId().Value, Type = "Entity" };
+                    entity.Geometry.Add(shape);
+                    Entity.Add(entity);
+                }
+            }
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+            var data = JsonSerializer.Serialize(this, options);
+            File.WriteAllText(fileName, data);
         }
     }
 }

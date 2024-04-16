@@ -13,7 +13,7 @@
         xmlns:av="clr-namespace:AnyCAD.NX.View;assembly=AnyCAD.NX.View"
         xmlns:ax="clr-namespace:AnyCAD.UX;assembly=AnyCAD.UX"
         mc:Ignorable="d"        
-        Title="AnyCAD Drawing 2023"  ResizeMode="CanResizeWithGrip"
+        Title="AnyCAD Drawing 2024"  ResizeMode="CanResizeWithGrip"
         Width="1024"
         Height="768"
         GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
@@ -168,7 +168,10 @@
                                            Icon="{Binding Source={x:Static ax:Icons.SketchLine}}" Margin="0,0,7,0"/>
                     <Fluent:Button Header="多折线"  Command="{Binding ExecuteSystemCommand}" 
                                            CommandParameter="Polyline"
-                                           Icon="{Binding Source={x:Static ax:Icons.SketchRectangle}}" Margin="0,0,7,0"/>
+                                           Icon="{Binding Source={x:Static ax:Icons.SketchLine}}" Margin="0,0,7,0"/>
+                     <Fluent:Button Header="矩形"  Command="{Binding ExecuteSystemCommand}" 
+                                           CommandParameter="Rectangle"
+                                           Icon="{Binding Source={x:Static ax:Icons.SketchRectangle}}" Margin="0,0,7,0"/>                   
                     <Fluent:Button Header="圆弧"  Command="{Binding ExecuteSystemCommand}" CommandParameter="Arc"
                                                Icon="{Binding Source={x:Static ax:Icons.SketchArc}}" Margin="0,0,7,0">
                         <!--<Fluent:MenuItem Header="三点圆弧"  Command="{Binding ExecuteSystemCommand}" 
@@ -223,7 +226,12 @@
                                                Icon="{Binding Source={x:Static ax:Icons.Material}}" Margin="0,0,7,0"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
-
+            <Fluent:RibbonTabItem Header="套料">
+                <Fluent:RibbonGroupBox Header="布局" Margin="7,0,0,0" >
+                    <Fluent:Button Header="布局"  Command="{Binding NestCommand}" 
+                                   Icon="{Binding Source={x:Static ax:Icons.Group}}" Margin="0,0,7,0"/>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <!--工作窗口-->
         <ad:DockingManager x:Name="dockingManager" Grid.Row="1">

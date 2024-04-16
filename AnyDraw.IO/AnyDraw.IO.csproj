@@ -8,6 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AnyCAD.AppFramework.NET" Version="2024.3.1.936" />
+    <PackageReference Include="AnyCAD.AppFramework.NET" Version="2024.4.15.1505" />
   </ItemGroup>
 </Project>
