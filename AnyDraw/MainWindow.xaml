@@ -153,7 +153,7 @@
                 </Fluent:QuickAccessMenuItem>
             </Fluent:Ribbon.QuickAccessItems>
             
-            <Fluent:RibbonTabItem Header="首页">
+            <Fluent:RibbonTabItem Header="首页" Width="50">
                 <Fluent:RibbonGroupBox Header="文件" Margin="7,0,0,0" >
                     <Fluent:Button Header="DXF"  Command="{Binding ExecuteSystemCommand}" 
                                                CommandParameter="ImportDXF"
@@ -226,7 +226,14 @@
                                                Icon="{Binding Source={x:Static ax:Icons.Material}}" Margin="0,0,7,0"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
-            <Fluent:RibbonTabItem Header="套料">
+            <Fluent:RibbonTabItem Header="标注"  Width="50"> 
+                 <Fluent:RibbonGroupBox Header="标注" Margin="7,0,0,0" >
+                    <Fluent:Button Header="线性"  Command="{Binding ExecuteSystemCommand}" 
+                                   CommandParameter="LinearAnnotation"
+                                   Icon="{Binding Source={x:Static ax:Icons.MeasureLength}}" Margin="0,0,7,0"/>
+                </Fluent:RibbonGroupBox>                 
+             </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="套料"  Width="50">
                 <Fluent:RibbonGroupBox Header="布局" Margin="7,0,0,0" >
                     <Fluent:Button Header="布局"  Command="{Binding NestCommand}" 
                                    Icon="{Binding Source={x:Static ax:Icons.Group}}" Margin="0,0,7,0"/>

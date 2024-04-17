@@ -1,0 +1,49 @@
+﻿<Window x:Class="AnyDraw.Nest.NestConfigView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnyDraw.Nest"
+        xmlns:Metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:nest="clr-namespace:AnyDraw.IO;assembly=AnyDraw.IO"
+        mc:Ignorable="d"
+        Title="排版设置" Height="278" Width="253" ShowInTaskbar="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner"
+        d:DataContext="{d:DesignInstance Type=nest:NestConfig}">
+    <Grid Margin="0,0,10,7">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="引擎" Width="50"></Label>
+                <TextBox Width="150" Text="{Binding EnginePath}" IsReadOnly="True"></TextBox>
+                <Button Content="浏览" Click="Button_Click"></Button>
+            </StackPanel>
+            <Expander Header="尺寸" IsExpanded="True">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="间距" Width="50"></Label>
+                        <Metro:NumericUpDown Value="{Binding Spacing}" Width="150"></Metro:NumericUpDown>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="长度" Width="50"></Label>
+                        <Metro:NumericUpDown Value="{Binding BinLength}" Width="150"></Metro:NumericUpDown>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="宽度" Width="50"></Label>
+                        <Metro:NumericUpDown Value="{Binding BinWidth}" Width="150"></Metro:NumericUpDown>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
+            <Expander Header="算法" IsExpanded="True">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="迭代" Width="50"></Label>
+                        <Metro:NumericUpDown Width="150" Value="{Binding IterationNum}" Minimum="10" Maximum="10000"></Metro:NumericUpDown>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button x:Name="btnOK" Content="确定" Click="Button_Click_OK"></Button>
+                <Button Content="取消" Margin="7,0,0,0" Click="Button_Click_Cancel"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
