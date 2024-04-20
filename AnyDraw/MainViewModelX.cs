@@ -1,6 +1,7 @@
 ﻿using AnyCAD.Foundation;
 using AnyCAD.NX.ViewModel;
 using AnyDraw.Nest;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Fluent;
 using System.Diagnostics;
@@ -90,6 +91,7 @@ namespace AnyDraw
         {
             var view = new NestConfigView(Document);
             view.ShowDialog();
+            StatusMessage = view.Message;
         }
     }
 }

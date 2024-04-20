@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace AnyDraw.IO
+namespace AnyDraw.IO.Nest
 {
     public class Placement
     {
@@ -22,6 +22,8 @@ namespace AnyDraw.IO
     }
     public class NestResult
     {
+        public double Usage { get; set; } = 0;
+        public double Length { get; set; } = 0;
         public List<Placement> Placement { get; set; } = new();
         static public NestResult? Load(string fileName)
         {
@@ -34,7 +36,7 @@ namespace AnyDraw.IO
 
         void OnApply(Document doc)
         {
-            foreach(var item in Placement)
+            foreach (var item in Placement)
             {
                 var ce = CurveElement.Cast(doc.FindElement(new ObjectId(item.Id)));
                 if (ce != null)

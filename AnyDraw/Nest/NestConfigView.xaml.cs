@@ -1,8 +1,9 @@
 ﻿using AnyCAD.Foundation;
-using AnyDraw.IO;
+using AnyCAD.NX.View;
 using System.Diagnostics;
 using System.Windows;
-
+using AnyDraw.IO.Nest;
+using System;
 namespace AnyDraw.Nest
 {
     /// <summary>
@@ -20,6 +21,8 @@ namespace AnyDraw.Nest
             if(config == null )
             {
                 config = new NestConfig();
+                var exePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AnyNest.exe");
+                config.EnginePath = exePath;
             }
 
             _Document = doc;
@@ -27,6 +30,8 @@ namespace AnyDraw.Nest
 
             this.DataContext = config;
         }
+
+        public string Message = string.Empty;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -57,26 +62,34 @@ namespace AnyDraw.Nest
             string configFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "anynest_config.json");
             config.Save(configFile);
 
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = config.EnginePath;
-            startInfo.Arguments = $"--input {input} --output {input} --config {configFile}";
-
-            startInfo.UseShellExecute = false;
-            startInfo.CreateNoWindow = false;
-
-            using (Process process = new Process())
+            ProgressView view = new ProgressView();
+            view.Run(() =>
             {
-                process.StartInfo = startInfo;
-                process.Start();
-                process.WaitForExit();
-                int exitCode = process.ExitCode;
-            }
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = config.EnginePath;
+                startInfo.Arguments = $"--input {input} --output {input} --config {configFile}";
+
+                startInfo.UseShellExecute = true;
+                startInfo.CreateNoWindow = false;
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                using (Process process = new Process())
+                {
+                    process.StartInfo = startInfo;
+                    process.Start();
+                    process.WaitForExit();
+                    int exitCode = process.ExitCode;
+                }
+            });
+
 
             var output = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "anynest_result.json");
             if (System.IO.File.Exists(output))
             {
-                var nr = AnyDraw.IO.NestResult.Load(output);
+                var nr = NestResult.Load(output);
                 nr.Apply(_Document);
+
+                Message = $"利用率: {nr.Usage} 长度: {nr.Length}";
             }
         }
         private void Button_Click_OK(object sender, RoutedEventArgs e)

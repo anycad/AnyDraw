@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnyDraw.Nest"
         xmlns:Metro="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:nest="clr-namespace:AnyDraw.IO;assembly=AnyDraw.IO"
+        xmlns:nest="clr-namespace:AnyDraw.IO.Nest;assembly=AnyDraw.IO"
         mc:Ignorable="d"
         Title="排版设置" Height="278" Width="253" ShowInTaskbar="False" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner"
         d:DataContext="{d:DesignInstance Type=nest:NestConfig}">
@@ -29,6 +29,16 @@
                     <StackPanel Orientation="Horizontal">
                         <Label Content="宽度" Width="50"></Label>
                         <Metro:NumericUpDown Value="{Binding BinWidth}" Width="150"></Metro:NumericUpDown>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="角度" Width="50"></Label>
+                        <ComboBox SelectedIndex="{Binding RotationFactor}" Width="150">
+                            <ComboBoxItem>0</ComboBoxItem>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Expander>

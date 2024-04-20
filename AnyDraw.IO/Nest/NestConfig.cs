@@ -1,9 +1,8 @@
-﻿using AnyCAD.IO.Drawing;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.IO;
 using System.Text.Json;
 
-namespace AnyDraw.IO
+namespace AnyDraw.IO.Nest
 {
     public partial class NestConfig : ObservableObject
     {
